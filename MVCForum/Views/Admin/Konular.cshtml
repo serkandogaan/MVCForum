@@ -1,0 +1,46 @@
+﻿@using MVCForum.Models
+@model List<Konu>
+@{
+    ViewBag.Title = "Konular";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h2>Konular</h2>
+
+
+<table>
+
+
+    <thead>
+
+        <tr>
+            <th width="10%">Konu ID</th>
+            <th width="25%">Kategori ID - Kategori Adı</th>
+            <th width="25%">Uye ID - Üye Adı</th>
+            <th width="30%">Konu Başlığı</th>
+            <th width="30%">Konu İçeriği</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var konular in Model)
+        {
+            <tr>
+
+                <td width="10%">@konular.KonuID</td>
+                <td width="25%">@konular.KategoriID @konular.Kategori.KategoriAdi</td>
+                <td width="25%">@konular.UyeID @konular.Uyeler.UyeAdi @konular.Uyeler.UyeSoyadi</td>
+                <td width="30%">@konular.KonuBaslik</td>
+                <td width="30%">@konular.KonuIcerik</td>
+
+
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>

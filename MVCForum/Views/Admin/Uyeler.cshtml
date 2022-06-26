@@ -1,0 +1,52 @@
+﻿@using MVCForum.Models
+@model List<Uyeler>
+@{
+    ViewBag.Title = "Uyeler";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h2>Üyeler</h2>
+
+<table>
+
+
+    <thead>
+
+        <tr>
+            <th width="10%">Üye ID</th>
+            <th width="20%">Üye Adı</th>
+            <th width="20%">Üye Soyadı</th>
+            <th width="20%">Üye Maid Adresi</th>
+            <th width="20%">Üye Şifresi</th>
+            <th width="20%">Üye Rölü</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var Uyeler in Model)
+        {
+            <tr>
+
+                <td width="10%">@Uyeler.UyeID</td>
+                <td width="20%">@Uyeler.UyeAdi</td>
+                <td width="20%">@Uyeler.UyeSoyadi</td>
+                <td width="20%">@Uyeler.UyeMail</td>
+                <td width="20%">@Uyeler.UyeSifre</td>
+                <td width="20%">@Uyeler.UyeRol</td>
+                <td> <a href="/Admin/ModYap/@Uyeler.UyeID" class="btn btn-info">Moderatör Yap</a></td>
+
+
+
+
+
+            </tr>
+
+
+        }
+
+    </tbody>
+
+
+</table>

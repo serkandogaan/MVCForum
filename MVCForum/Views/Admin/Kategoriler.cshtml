@@ -1,0 +1,50 @@
+﻿@using MVCForum.Models
+@model List<Kategori>
+@{
+    ViewBag.Title = "KategorileriListele";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+
+<table>
+
+
+    <thead>
+
+        <tr>
+            <th width="10%">Kategori ID</th>
+            <th width="30%">Kategori Adı</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var kategoriler in Model)
+        {
+            <tr>
+
+                <td width="10%">@kategoriler.KategoriID</td>
+                <td width="30%">@kategoriler.KategoriAdi</td>
+
+
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+
+<br />
+<br />
+
+@using (Html.BeginForm("YeniKategoriEkle", "Admin", FormMethod.Post, new { @class = "form-wrapper" }))
+{
+    <input type="text" class="form-control" name="KategoriAdi" placeholder="Yeni Kategori Adını Giriniz" />
+    <br />
+    <button type="submit" class="btn btn-info">Yeni Kategoriyi Ekle</button>
+}
+

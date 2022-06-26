@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19c0f3f3990f41bdb5df69882eeed8d5" Name="Diagram1">
+        <EntityTypeShape EntityType="MVCForumModel.Kategori" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCForumModel.Konu" Width="1.5" PointX="3.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCForumModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCForumModel.Uyeler" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCForumModel.Yorum" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="MVCForumModel.FK_Konu_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCForumModel.FK_Konu_Uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCForumModel.FK_Yorum_Konu" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCForumModel.FK_Yorum_Uyeler" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

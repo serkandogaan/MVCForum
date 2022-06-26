@@ -1,0 +1,112 @@
+﻿@using MVCForum.Models
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Yorum>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC Forum - @ViewBag.konukategoriadi - @ViewBag.konubaslik</title>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Theme/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!--NavBar Section-->
+        @Html.Action("Navbar", "Home")
+    </header>
+    <!--SearchBox Section-->
+
+    <div class="container">
+        <!--Navigation-->
+        <div class="navigate">
+            <span><a href="/Home/Index">MVC Forum</a> >> <a href="/Home/KategoriKonulari/@ViewBag.konukategoriid"> @ViewBag.konukategoriadi</a> >> <a href=""> @ViewBag.konubaslik</a></span>
+        </div>
+
+        <!--Topic Section-->
+        <div class="topic-container">
+            <!--Original thread-->
+            <div class="head">
+                <div class="authors">Kullanıcı</div>
+                <div class="content">Konu Yorumları</div>
+            </div>
+            <div class="body">
+                <div class="authors">
+                    <div class="username"><a href=""> @ViewBag.konuuyeadi @ViewBag.konuuyesoyad </a></div>
+                    <div>@ViewBag.konuuyerol</div>
+                </div>
+                <div class="content">
+                    @ViewBag.konuicerik
+
+                </div>
+            </div>
+
+            @foreach (var konuyorum in Model)
+            {
+            <div class="body">
+                <div class="authors">
+                    <div class="username"><a href="">@konuyorum.Uyeler.UyeAdi @konuyorum.Uyeler.UyeSoyadi </a></div>
+                    <div>@konuyorum.Uyeler.UyeRol</div>
+                </div>
+                <div class="content">
+
+                    @konuyorum.YorumIcerigi
+
+                </div>
+                @if (User.IsInRole("Admin") || User.IsInRole("Mod"))
+                {
+                    <a class="btn btn-danger" href="/Home/MesajiSil/@konuyorum.YorumID">Mesajı Sil</a>
+                }
+            </div>
+                
+            }
+
+        </div>
+        <br />
+        <br />
+
+        @if (User.Identity.IsAuthenticated == true)
+        {
+            using (Html.BeginForm("KonuIcerik", "Home", FormMethod.Post))
+            {
+
+                <div class="body">
+                    <div class="authors">
+                        <div class="username"><a href="">@ViewBag.KullaniciUyeAdi @ViewBag.KullaniciUyeSoyadi </a></div>
+                    </div>
+                    <div class="content">
+
+                        <textarea class="form-control" name="YorumIcerigi" placeholder="Yorumunuz"></textarea>
+
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Yorumu Gönder</button>
+
+            }
+        }
+
+
+                <div class="pagination">
+                    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("KonuIcerik", "Home", new { sayfa }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                </div>
+
+
+    </div>
+    <footer>
+        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
+    </footer>
+    <script src="~/Theme/main.js"></script>
+</body>
+</html>
+

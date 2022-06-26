@@ -1,0 +1,30 @@
+﻿<div class="navbar">
+    <nav class="navigation hide" id="navigation">
+        <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+        <ul class="nav-list">
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <li class="nav-item"><a href="/Login/Login">Giriş Yap</a></li>
+                <li class="nav-item"><a href="/Login/Register">Üye Ol</a></li>
+            }
+
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <li class="nav-item"><a href="/Login/Logout">Çıkış Yap</a></li>
+            }
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <li class="nav-item"><a href="#">@HttpContext.Current.User.Identity.Name</a></li>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item"><a href="/Admin/AdminPage">Admin Panel</a></li>
+            }
+
+        </ul>
+    </nav>
+    <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+    <div class="brand">MVC Forum</div>
+</div>
+
