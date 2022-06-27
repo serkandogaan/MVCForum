@@ -21,6 +21,6 @@ kullanabilirsiniz.
 
 ![Kategoriler](https://i.hizliresim.com/bw3h7o1.PNG)
 
-# Blog Admin
+# Forum Admin
 
 ![AdminPanel](https://i.hizliresim.com/bpcaoih.PNG)
