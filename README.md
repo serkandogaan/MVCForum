@@ -9,6 +9,8 @@ Admin olarak giriş için;
 
 kullanabilirsiniz.
 
+Projede, üyeler yorum yapabilir. Mod arkadaşlar yorum silebilir. Üye olmayanlar yorum yapamaz.
+
 # Forum Ana Sayfa
 
 ![AnaSayfa](https://i.hizliresim.com/fmrwiw6.PNG)
